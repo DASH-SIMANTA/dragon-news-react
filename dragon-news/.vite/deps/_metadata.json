@@ -1,0 +1,64 @@
+{
+  "hash": "3ceb17d4",
+  "configHash": "ac94c148",
+  "lockfileHash": "ce6a7401",
+  "browserHash": "a7e22e84",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "ed87bd19",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "f0ce07c4",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "e31fad9d",
+      "needsInterop": false
+    },
+    "react-fast-marquee": {
+      "src": "../../node_modules/react-fast-marquee/dist/index.js",
+      "file": "react-fast-marquee.js",
+      "fileHash": "079fd36b",
+      "needsInterop": true
+    },
+    "react-icons/fa6": {
+      "src": "../../node_modules/react-icons/fa6/index.mjs",
+      "file": "react-icons_fa6.js",
+      "fileHash": "655eef6c",
+      "needsInterop": false
+    },
+    "react-icons/fa": {
+      "src": "../../node_modules/react-icons/fa/index.mjs",
+      "file": "react-icons_fa.js",
+      "fileHash": "24f6fb84",
+      "needsInterop": false
+    },
+    "moment": {
+      "src": "../../node_modules/moment/dist/moment.js",
+      "file": "moment.js",
+      "fileHash": "99240d21",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-WN7W3SD2": {
+      "file": "chunk-WN7W3SD2.js"
+    },
+    "chunk-5E5FKQGK": {
+      "file": "chunk-5E5FKQGK.js"
+    },
+    "chunk-RCGQOTJJ": {
+      "file": "chunk-RCGQOTJJ.js"
+    },
+    "chunk-7D4SUZUM": {
+      "file": "chunk-7D4SUZUM.js"
+    }
+  }
+}
