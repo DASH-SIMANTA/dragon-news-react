@@ -29,7 +29,9 @@ const router = createBrowserRouter([
     {
         path: '/news/:id',
         element: <PrivateRoute>
+
             <NewsDetails></NewsDetails>
+            
         </PrivateRoute>,
         
         loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`),
