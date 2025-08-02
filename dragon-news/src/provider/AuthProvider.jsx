@@ -5,20 +5,22 @@ import { app } from "../firebase/firebase.init";
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
-const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-};
-const logInUser = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-}
-
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    console.log(user)
+    const [loading, setLoading] = useState(true);
+    console.log(user, loading);
 
-
+    const createUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+    const logInUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
@@ -29,12 +31,14 @@ const AuthProvider = ({ children }) => {
         logInUser,
         createUser,
         logOut,
+        loading,
 
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('Auth state changed:', currentUser);
             setUser(currentUser);
+            setLoading(false);
         });
 
         // Cleanup subscription on unmount

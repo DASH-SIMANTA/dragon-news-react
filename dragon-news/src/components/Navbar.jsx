@@ -8,7 +8,7 @@ const Navbar = () => {
     const {user,logOut} =useContext(AuthContext);
     console.log(user);
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center bg-amber-400">
             <div className="bg-green-600">{user?.email}</div>
             <div className="nav space-x-5">
                 <Link to='/'>Home</Link>
