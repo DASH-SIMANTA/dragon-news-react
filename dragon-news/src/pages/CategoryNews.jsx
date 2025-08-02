@@ -21,7 +21,7 @@ const CategoryNews = () => {
 
 
 
-            {error && <p className="text-red-500">Error loading news: {error.message}</p>}
+            {/* {error && <p className="text-red-500">Error loading news: {error.message}</p>} */}
         </div>
     );
 };

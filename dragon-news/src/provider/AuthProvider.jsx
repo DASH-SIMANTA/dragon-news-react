@@ -17,8 +17,17 @@ const AuthProvider = ({children}) => {
     console.log(user);
 
 
+    const createUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+    const logInUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
@@ -29,12 +38,14 @@ const AuthProvider = ({children}) => {
         logInUser,
         createUser,
         logOut,
+        loading,
 
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('Auth state changed:', currentUser);
             setUser(currentUser);
+            setLoading(false);
         });
 
         // Cleanup subscription on unmount

@@ -9,8 +9,11 @@ const NewsCard = ({ news }) => {
     details,
     total_view,
     rating,
-    published_date,
+    
   } = news;
+
+  const trimmedDetails =
+    details.length > 200 ? details.slice(0, 200) + "..." : details;
 
   return (
     <div className="card bg-base-100 border rounded-md shadow-sm border-blue-200">
