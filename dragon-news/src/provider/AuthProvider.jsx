@@ -12,9 +12,9 @@ const logInUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
 }
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
-    console.log(user)
+    console.log(user);
 
 
 

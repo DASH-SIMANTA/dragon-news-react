@@ -1,72 +1,73 @@
-import { FaEye, FaStar, FaRegBookmark, FaShareAlt } from "react-icons/fa";
+import { FaBookmark, FaShareAlt, FaStar, FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const NewsCard = ({ props }) => {
+const NewsCard = ({ news }) => {
   const {
-    title,
     author,
-    thumbnail_url,
+    title,
+    image_url,
     details,
     total_view,
     rating,
     published_date,
-  } = props;
-
-  const trimmedDetails =
-    details.length > 200 ? details.slice(0, 200) + "..." : details;
+  } = news;
 
   return (
-    <div className="border border-blue-300 rounded-md p-4 mb-6 shadow-md">
+    <div className="card bg-base-100 border rounded-md shadow-sm border-blue-200">
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center gap-3">
+      <div className="flex justify-between items-center p-4">
+        <div className="flex items-center gap-4">
           <img
             src={author?.img}
-            alt="Author"
-            className="w-10 h-10 rounded-full object-cover"
+            alt={author?.name}
+            className="w-10 h-10 rounded-full"
           />
           <div>
-            <h3 className="font-bold">{author?.name}</h3>
-            <p className="text-sm text-gray-500">
-              {author?.published_date?.split(" ")[0]}
-            </p>
+            <h2 className="font-bold text-sm">{author?.name}</h2>
+            <p className="text-xs text-gray-500">{author.published_date}</p>
           </div>
+          
         </div>
-        <div className="flex gap-3 text-gray-500 text-xl">
-          <FaRegBookmark className="cursor-pointer" />
-          <FaShareAlt className="cursor-pointer" />
+        <div className="flex gap-2 text-gray-600">
+          <FaBookmark />
+          <FaShareAlt />
         </div>
       </div>
 
-      {/* Title */}
-      <h2 className="text-xl font-semibold leading-snug mb-3">{title}</h2>
-
-      {/* Image */}
-      <img
-        src={thumbnail_url}
-        alt="News thumbnail"
-        className="w-full h-64 object-cover rounded-md mb-4"
-      />
-
-      {/* Description */}
-      <p className="text-gray-600 text-sm mb-2">{trimmedDetails}</p>
-      <span className="text-orange-500 font-semibold cursor-pointer">
-        Read More
-      </span>
+      {/* Body */}
+      <div className="px-4">
+        <h2 className="text-lg font-bold mb-2 leading-tight">{title}</h2>
+        <figure>
+          <img
+            src={image_url}
+            alt="News"
+            className="w-full h-60 object-cover rounded-md"
+          />
+        </figure>
+        <p className="mt-4 text-gray-700 text-sm">
+          {details.slice(0, 300)}...
+          <Link to={`/news/${news._id}`} className="text-orange-500 font-semibold cursor-pointer">
+            {" "}
+            Read More
+          </Link>
+        </p>
+      </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center mt-4 pt-3 border-t">
-        {/* Rating */}
-        <div className="flex items-center gap-2 text-orange-400">
-          {[...Array(Math.round(rating?.number || 0))].map((_, i) => (
-            <FaStar key={i} />
-          ))}
-          <span className="text-gray-800 font-medium">{rating?.number}</span>
+      <div className="flex justify-between items-center px-4 py-3 border-t mt-4">
+        <div className="flex items-center text-orange-400 gap-2">
+          <div className="flex">
+            {Array(Math.round(rating.number))
+              .fill()
+              .map((_, idx) => (
+                <FaStar key={idx} />
+              ))}
+          </div>
+          <span className="text-black text-sm">{rating.number}</span>
         </div>
-
-        {/* Views */}
-        <div className="flex items-center gap-2 text-gray-600">
+        <div className="flex items-center text-gray-500 gap-2">
           <FaEye />
-          <span>{total_view}</span>
+          <span className="text-sm">{total_view}</span>
         </div>
       </div>
     </div>
