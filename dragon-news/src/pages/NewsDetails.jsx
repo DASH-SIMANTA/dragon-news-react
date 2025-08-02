@@ -7,11 +7,10 @@ const NewsDetails = () => {
     const data = useLoaderData();
     const news = data?.data[0];
 
-    // if (!news) {
-    //     return <p>Loading or no news found...</p>;
-    // }
+    if (!news) {
+        return <p>Loading or no news found...</p>;
+    }
     console.log(news);
-
 
     // console.log(data);
     return (

@@ -9,13 +9,13 @@ const PrivateRoute = ({children}) => {
     console.log(user);
     const location = useLocation();
     console.log(location);
-    // if(loading){
-    //     return <Loading></Loading>
-    // }
-    // if(user && user.email){
-    //     return children;
-    // }
-    // return <Navigate state={location.pathname} to="/auth/login" replace />;
+    if(loading){
+        return <Loading></Loading>
+    }
+    if(user && user.email){
+        return children;
+    }
+    return <Navigate state={location.pathname} to="/auth/login" replace />;
        
 };
 
