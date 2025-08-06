@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 
 const Login = () => {
-    // const navigate = useNavigate();
+    const [error, setError]= useState({});
     const { logInUser, setUser } = useContext(AuthContext);
     const location = useLocation();
     console.log(location);
+    const navigate = useNavigate()
     const handleLogin = event => {
         event.preventDefault();
 
@@ -23,9 +24,11 @@ const Login = () => {
                 setUser(user);
                 // You can also update the user's profile with name and photo URL here if needed
                 console.log(user);
+
+                navigate(location?.state ? location.state : '/');
             })
-            .catch(error => {
-                alert(error.code);
+            .catch(err => {
+                setError({...error, login: err.code});
             });
 
     }
@@ -61,6 +64,9 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                        {
+                            error.login && <label className='text-red-500 label'>{error.login}</label>
+                        }
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
