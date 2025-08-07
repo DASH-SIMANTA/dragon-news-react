@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-    const { createUser,setUser } = useContext(AuthContext);
+    const { createUser,setUser,updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState({});
+
+    const navigate = useNavigate();
 
 
     const handleSubmit = (event) => {
@@ -32,6 +34,21 @@ const Register = () => {
                 const user = result.user;
                 setUser(user);
                 // You can also update the user's profile with name and photo URL here if needed
+                updateUserProfile({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        navigate('/');
+                    })
+                    .catch(error => {
+                        console.error('Error updating user profile:', error);
+                    });
+                console.log('User created successfully:', user);
+                // Optionally, you can navigate to a different page or show a success message
+                // navigate('/'); // Uncomment if you want to redirect after registration
+                // For debugging purposes
+                console.log('User:', user);
+                console.log('User email:', user.email);
+                console.log('User display name:', user.displayName);
+                console.log('User photo URL:', user.photoURL);                  
                 console.log(user);
             })
             .catch(error => {
