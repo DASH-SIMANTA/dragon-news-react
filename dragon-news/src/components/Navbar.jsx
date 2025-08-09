@@ -6,7 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
     const {user,logOut} =useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
     return (
         <div className="flex justify-between items-center">
             <div className="bg-green-600">{user?.email}</div>
