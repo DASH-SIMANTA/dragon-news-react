@@ -10,7 +10,7 @@ const NewsDetails = () => {
     if (!news) {
         return <p>Loading or no news found...</p>;
     }
-    console.log(news);
+    // console.log(news);
 
     // console.log(data);
     return (

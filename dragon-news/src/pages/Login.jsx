@@ -7,7 +7,7 @@ const Login = () => {
     const [error, setError]= useState({});
     const { logInUser, setUser } = useContext(AuthContext);
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     const navigate = useNavigate()
     const handleLogin = event => {
         event.preventDefault();
@@ -17,13 +17,13 @@ const Login = () => {
         const email = formData.get('email');
         const password = formData.get('password');
 
-        console.log({ email, password });
+        // console.log({ email, password });
         logInUser(email, password)
             .then(result => {
                 const user = result.user;
                 setUser(user);
                 // You can also update the user's profile with name and photo URL here if needed
-                console.log(user);
+                // console.log(user);
 
                 navigate(location?.state ? location.state : '/');
             })

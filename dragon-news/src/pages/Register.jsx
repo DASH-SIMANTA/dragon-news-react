@@ -28,7 +28,7 @@ const Register = () => {
         const email = formData.get('email');
         const password = formData.get('password');
 
-        console.log({ name, photo, email, password });
+        // console.log({ name, photo, email, password });
         createUser(email, password)
             .then(result => {
                 const user = result.user;
@@ -41,15 +41,11 @@ const Register = () => {
                     .catch(error => {
                         console.error('Error updating user profile:', error);
                     });
-                console.log('User created successfully:', user);
+                // console.log('User created successfully:', user);
                 // Optionally, you can navigate to a different page or show a success message
                 // navigate('/'); // Uncomment if you want to redirect after registration
                 // For debugging purposes
-                console.log('User:', user);
-                console.log('User email:', user.email);
-                console.log('User display name:', user.displayName);
-                console.log('User photo URL:', user.photoURL);                  
-                console.log(user);
+                
             })
             .catch(error => {
                 const errorCode = error.code;
